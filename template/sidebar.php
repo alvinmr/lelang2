@@ -15,17 +15,31 @@
             <a class="nav-link" href="./index?page=barang"><i class="fas fa-list"></i> <span>Barang
                     Lelang</span></a>
         </li>
+        <!-- Menu admin -->
+        <?php if ($_SESSION['level'] == 'admin') { ?>
         <li class="menu-header">Registrasi</li>
         <li class="<?= $_GET['page'] == 'regis_petugas' ? 'active' : '' ?>">
             <a class="nav-link" href="./index?page=regis_petugas">
                 <i class="fas fa-users"></i>
                 <span>Regis Petugas</span></a>
         </li>
-        <li class="menu-header">History</li>
-        <li class="<?= $_GET['page'] == 'history' ? 'active' : '' ?>">
-            <a class="nav-link" href="./index?page=history">
+
+        <!-- Menu Petugas -->
+        <?php } else { ?>
+        <li class="menu-header">Lelang</li>
+        <li class="<?= $_GET['page'] == 'lelang' ? 'active' : '' ?>">
+            <a class="nav-link" href="./index?page=lelang">
+                <i class="fas fa-users"></i>
+                <span>List Lelang</span></a>
+        </li>
+
+        <?php } ?>
+
+        <li class="menu-header">Laporan</li>
+        <li class="<?= $_GET['page'] == 'laporan' ? 'active' : '' ?>">
+            <a class="nav-link" href="./index?page=laporan">
                 <i class="fas fa-info"></i>
-                <span>History</span></a>
+                <span>Laporan</span></a>
         </li>
     </ul>
 </aside>

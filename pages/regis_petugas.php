@@ -1,6 +1,7 @@
 <?php
 
 if (!$_SESSION) header('location:index.php');
+if ($_SESSION['level'] != 'admin') header('location:index.php');
 
 
 $data = mysqli_query($koneksi, "SELECT * FROM `tb_petugas` WHERE level = 'petugas'");
