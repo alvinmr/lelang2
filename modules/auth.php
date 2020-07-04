@@ -16,6 +16,7 @@ switch ($_GET['aksi']) {
             header('location:../login.php?pesan=gagal');
         } else {
             $_SESSION['username'] = $username;
+            $_SESSION['id_user'] = $fetch['id_user'];
             $_SESSION['nama_lengkap'] = $fetch['nama_lengkap'];
             header('location:../index.php');
         }

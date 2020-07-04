@@ -4,6 +4,10 @@ include './db/config.php';
 
 session_start();
 
+if (!empty($_GET['pesan'])) {
+    if ($_GET['pesan'] == 'gagal') echo "<script> alert('bid kamu kurang tinggi'); </script>";
+}
+
 ?>
 
 <!doctype html>
@@ -14,11 +18,13 @@ session_start();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <title>Lelang</title>
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-        <title>Lelang</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     </head>
 
     <body>
@@ -32,12 +38,13 @@ session_start();
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-item nav-link active" href="./">Beranda <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="?page=riwayat">Riwayat</a>
+                        <a class="nav-item nav-link <?= $_GET['page'] == '' ? 'active' : '' ?>" href="./">Beranda</a>
                         <?php if (empty($_SESSION['username'])) { ?>
                         <a href="login.php" class="btn btn-primary mx-4">Masuk</a>
                         <a href="register.php" class="btn btn-secondary">Daftar</a>
                         <?php } else { ?>
+                        <a class="nav-item nav-link <?= $_GET['page'] == 'riwayat' ? 'active' : '' ?>"
+                            href="?page=riwayat">Riwayat</a>
                         <a href="./modules/auth.php?aksi=logout" class="btn btn-primary">Logout</a>
                         <?php } ?>
 
@@ -48,9 +55,20 @@ session_start();
         <!-- End Navbar -->
 
         <!-- Content -->
-        <?php include './pages/index.php' ?>
+        <?php if (empty($_GET['page'])) {
+        include './pages/index.php';
+    } else {
+        include './pages/' . $_GET['page'] . '.php';
+    }  ?>
         <!-- End Content -->
 
+
+        <!-- Footer -->
+        <footer>
+            <div class="container my-4 text-center">
+                Copyright milik tuhan
+            </div>
+        </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
