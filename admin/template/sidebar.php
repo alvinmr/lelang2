@@ -32,6 +32,11 @@
                 <i class="fas fa-users"></i>
                 <span>List Lelang</span></a>
         </li>
+        <li class="<?= $_GET['page'] == 'penawar_lelang' ? 'active' : '' ?>">
+            <a class="nav-link" href="./index?page=penawar_lelang">
+                <i class="fas fa-gavel"></i>
+                <span>Penawar Lelang</span></a>
+        </li>
 
         <?php } ?>
 

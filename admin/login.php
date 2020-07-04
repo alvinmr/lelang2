@@ -14,7 +14,7 @@ if (!empty($_GET['pesan']))
     }
 session_start();
 
-if (!empty($_SESSION['username'])) {
+if (!empty($_SESSION['level'])) {
     header("location:index.php");
 }
 ?>

@@ -14,6 +14,7 @@ if (mysqli_num_rows($data) <= 0) {
     header('location:../login.php?pesan=gagal');
 } else {
     $_SESSION['username'] = $username;
+    $_SESSION['id_petugas'] = $fetch['id_petugas'];;
     $_SESSION['nama'] = $fetch['nama_petugas'];
     $_SESSION['level'] = $fetch['level'];
     header('location:../index');

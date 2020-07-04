@@ -95,10 +95,8 @@ switch ($_GET['aksi']) {
         $query = mysqli_query($koneksi, "SELECT * FROM `tb_barang` WHERE id_barang = $id");
         $row = mysqli_fetch_array($query);
         $path = "../template/assets/img/barang/" . $row['foto_barang'];
-        if (!$row['foto_barang'] == 'default.jpg') {
-            unlink(realpath($path));
-        }
-        mysqli_query($koneksi, "DELETE FROM `tb_barang` WHERE id_barang = $id");
+        unlink($path);
+        mysqli_query($koneksi, "DELETE FROM `tb_barang` WHERE id_barang = $id") or die(mysqli_error($koneksi));
         header('location:../index?page=barang');
         break;
 

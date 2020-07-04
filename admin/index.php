@@ -5,7 +5,7 @@ include './template/header.php';
 
 session_start();
 
-if (empty($_SESSION))  header('location:login.php');
+if (empty($_SESSION['level']))  header('location:login.php');
 ?>
 
 <body>

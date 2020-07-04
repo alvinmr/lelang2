@@ -4,9 +4,10 @@ if (!$_SESSION) header('location:index.php');
 if ($_SESSION['level'] != 'petugas') header('location:index.php');
 
 
-$data = mysqli_query($koneksi, "SELECT `id_lelang`, `nama_barang`, `tgl_lelang`, `nama_petugas`, `status`  
+$data = mysqli_query($koneksi, "SELECT `id_lelang`, `nama_barang`, `tgl_lelang`, `harga_akhir`, `nama_lengkap`, `nama_petugas`, `status`  
                         FROM tb_lelang JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang 
-                        JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas");
+                        JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas 
+                        JOIN tb_masyarakat ON tb_lelang.id_user = tb_masyarakat.id_user");
 $dataBarang = mysqli_query($koneksi, "SELECT id_barang, nama_barang, harga_awal FROM `tb_barang`");
 $dataMasyarakat = mysqli_query($koneksi, "SELECT id_user, nama_lengkap FROM `tb_masyarakat`");
 $dataPetugas = mysqli_query($koneksi, "SELECT id_petugas, nama_petugas FROM `tb_petugas`");
@@ -16,13 +17,9 @@ $no = 0;
 
 <section class="section">
     <div class="section-header">
-        <h1>List Lelang</h1>
+        <h1>Penawar Lelang</h1>
     </div>
     <div class="section-body">
-        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahModal">
-            <i class="fas fa-plus"></i>
-            Tambah
-        </button>
         <div class="card">
             <div class="card-body">
                 <table id="table" class="table">
@@ -30,9 +27,10 @@ $no = 0;
                         <th>No</th>
                         <th>Nama Barang</th>
                         <th>Tanggal</th>
+                        <th>Harga Akhir</th>
+                        <th>Masyarakat</th>
                         <th>Petugas</th>
                         <th>Status</th>
-                        <th>Aksi</th>
                     </thead>
                     <tbody>
                         <?php while ($row = mysqli_fetch_array($data)) : ?>
@@ -41,22 +39,12 @@ $no = 0;
                             <td><?= $no ?></td>
                             <td><?= $row['nama_barang'] ?></td>
                             <td><?= $row['tgl_lelang'] ?></td>
+                            <td><?= $row['harga_akhir'] ?></td>
+                            <td><?= $row['nama_lengkap'] ?></td>
                             <td><?= $row['nama_petugas'] ?></td>
                             <td>
                                 <span
                                     class="badge <?= $row['status'] == 'dibuka' ? 'badge-success' : 'badge-warning' ?> "><?= $row['status'] ?></span>
-                            </td>
-                            <td>
-                                <?php if ($row['status'] == 'dibuka') { ?>
-                                <a href="./modules/lelang_module?aksi=tutup&id=<?= $row['id_lelang'] ?>"
-                                    class="btn btn-warning">Tutup</a>
-                                <? } else{ ?>
-                                <a href="./modules/lelang_module?aksi=buka&id=<?= $row['id_lelang'] ?>"
-                                    class="btn btn-success">Buka</a>
-                                <?php } ?>
-
-                                <a href="./modules/lelang_module?aksi=hapus&id=<?= $row['id_lelang'] ?>"
-                                    class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                         <?php endwhile; ?>
