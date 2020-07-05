@@ -12,7 +12,7 @@
                 <div class="d-sm-none d-lg-inline-block">Hi, <?= $_SESSION['nama'] ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="./modules/logout.php" class="dropdown-item has-icon text-danger">
+                <a href="./modules/auth.php?aksi=logout" class="dropdown-item has-icon text-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </div>

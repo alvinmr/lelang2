@@ -34,7 +34,8 @@ if (!empty($_SESSION['level'])) {
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="./modules/auth.php" class="needs-validation" novalidate="">
+                        <form method="POST" action="./modules/auth.php?aksi=login" class="needs-validation"
+                            novalidate="">
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input id="username" type="username" class="form-control" name="username" tabindex="1"

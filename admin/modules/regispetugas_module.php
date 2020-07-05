@@ -14,12 +14,8 @@ switch ($_GET['aksi']) {
             '$username',
             '$password',
             'petugas'
-        )") or die(mysqli_error($koneksi));
+        )");
         header('location:../index?page=regis_petugas');
-        break;
-
-    case 'edit':
-        # code...
         break;
 
     case 'hapus':

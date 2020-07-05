@@ -15,12 +15,9 @@ switch ($_GET['aksi']) {
         $file_tmp = $_FILES['foto']['tmp_name'];
         $path = "../template/assets/img/barang/" . $namaFoto;
 
-        // Cek tipe nya harus jpeg atau png
-        if ($tipeFoto == "image/jpeg" || $tipeFoto == "image/png") {
-            // cek ukuran fotonya gaboleh lebih dari 10mb
-            if ($ukuranFoto <= 1000000) {
-                // cek berhasil apa nggak upload file nya
-                if (move_uploaded_file($file_tmp, $path)) {
+        if ($tipeFoto == "image/jpeg" || $tipeFoto == "image/png") { // Cek tipe nya harus jpeg atau png            
+            if ($ukuranFoto <= 1000000) { // cek ukuran fotonya gaboleh lebih dari 10mb
+                if (move_uploaded_file($file_tmp, $path)) { // cek berhasil apa nggak upload file nya
                     mysqli_query($koneksi, "INSERT INTO `tb_barang`
                     VALUES (
                         null,
@@ -29,7 +26,7 @@ switch ($_GET['aksi']) {
                         '$harga_awal',
                         '$deskripsi',
                         '$namaFoto'
-                        )") or die(mysqli_error($koneksi));
+                        )");
                 } else {
                     echo "<script> alert('Maaf, Gambar gagal untuk diupload.'); </script>";
                 }
@@ -52,9 +49,9 @@ switch ($_GET['aksi']) {
         $tipeFoto = $_FILES['foto']['type'];
         $namaFoto = $_FILES['foto']['name'];
         $ukuranFoto = $_FILES['foto']['size'];
-        $file_tmp = $_FILES['foto']['tmp_name'];
+        $file_tmp = $_FILES['foto']['tmp_name']; // file_tmp berfungsi nyimpan gambar secara sementara lalu di upload
         $path = "../template/assets/img/barang/" . $namaFoto;
-        if ($namaFoto) {
+        if ($namaFoto) { //cek apakah ada mengisi foto
             if ($tipeFoto == "image/jpeg" || $tipeFoto == "image/png") {
                 // cek ukuran fotonya gaboleh lebih dari 10mb
                 if ($ukuranFoto <= 1000000) {
@@ -67,7 +64,7 @@ switch ($_GET['aksi']) {
                             harga_awal = '$harga_awal',
                             deskripsi_barang = '$deskripsi',
                             foto_barang = '$namaFoto'
-                            WHERE id_barang = $id") or die(mysqli_error($koneksi));
+                            WHERE id_barang = $id");
                     } else {
                         echo "<script> alert('Maaf, Gambar gagal untuk diupload.'); </script>";
                     }
@@ -84,7 +81,7 @@ switch ($_GET['aksi']) {
                 tgl = '$tgl',
                 harga_awal = '$harga_awal',
                 deskripsi_barang = '$deskripsi'
-                WHERE id_barang = $id") or die(mysqli_error($koneksi));
+                WHERE id_barang = $id");
         }
 
         header('location:../index?page=barang');
@@ -95,8 +92,8 @@ switch ($_GET['aksi']) {
         $query = mysqli_query($koneksi, "SELECT * FROM `tb_barang` WHERE id_barang = $id");
         $row = mysqli_fetch_array($query);
         $path = "../template/assets/img/barang/" . $row['foto_barang'];
-        unlink($path);
-        mysqli_query($koneksi, "DELETE FROM `tb_barang` WHERE id_barang = $id") or die(mysqli_error($koneksi));
+        unlink($path); //untuk hapus foto
+        mysqli_query($koneksi, "DELETE FROM `tb_barang` WHERE id_barang = $id");
         header('location:../index?page=barang');
         break;
 

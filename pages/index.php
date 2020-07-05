@@ -1,8 +1,8 @@
 <?php 
 
-$queryLelang = mysqli_query($koneksi, "SELECT tb_lelang.id_barang, `id_lelang`, `harga_awal`, `foto_barang` , `harga_akhir`, `nama_barang`, `deskripsi_barang`, `tgl_lelang`, `nama_petugas`, `status`  
-                            FROM tb_lelang JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang 
-                            JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas");
+$queryLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang 
+                                        JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang 
+                                        JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas");
 
 ?>
 

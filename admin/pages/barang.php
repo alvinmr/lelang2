@@ -3,7 +3,7 @@
 if (!$_SESSION) header('location:index.php');
 
 
-$data = mysqli_query($koneksi, "SELECT * FROM `tb_barang`");
+$queryBarang = mysqli_query($koneksi, "SELECT * FROM `tb_barang`");
 $no = 0;
 ?>
 
@@ -30,7 +30,7 @@ $no = 0;
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($data)) : ?>
+                        <?php while ($row = mysqli_fetch_array($queryBarang)) : ?>
                         <?php $no++ ?>
                         <tr>
                             <td><?= $no ?></td>
@@ -104,8 +104,8 @@ $no = 0;
 <!-- End Modal Tambah -->
 
 <!-- Modal Edit-->
-<?php $data = mysqli_query($koneksi, "SELECT * FROM `tb_barang`"); ?>
-<?php while ($row = mysqli_fetch_array($data)) : ?>
+<?php $queryBarang = mysqli_query($koneksi, "SELECT * FROM `tb_barang`"); ?>
+<?php while ($row = mysqli_fetch_array($queryBarang)) : ?>
 <div class="modal fade" id="editModal<?= $row['id_barang'] ?>" tabindex="-1" role="dialog"
     aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">

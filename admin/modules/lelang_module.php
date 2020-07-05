@@ -18,7 +18,7 @@ switch ($_GET['aksi']) {
             null,
             '$id_petugas',
             'dibuka'
-        )") or die(mysqli_error($koneksi));
+        )");
         header('location:../index?page=lelang');
         break;
 

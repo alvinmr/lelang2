@@ -1,4 +1,6 @@
 <?php
+if (empty($_SESSION['level'])) header('location:index.php'); //Selain petugas / admin gabisa akses halaman
+
 require_once("./dompdf/autoload.inc.php");
 
 use Dompdf\Dompdf;
@@ -7,7 +9,8 @@ $dompdf = new Dompdf();
 $queryLaporan = mysqli_query($koneksi, "SELECT * FROM `tb_lelang` 
                                         JOIN `tb_barang` ON tb_lelang.id_barang = tb_barang.id_barang 
                                         JOIN `tb_petugas` ON tb_lelang.id_petugas = tb_petugas.id_petugas
-                                        JOIN `tb_masyarakat` ON tb_lelang.id_user = tb_masyarakat.id_user");
+                                        JOIN `tb_masyarakat` ON tb_lelang.id_user = tb_masyarakat.id_user 
+                                        WHERE status = 'ditutup'");
 
 $html = '<center><h3>Daftar Hasil Lelang</h3></center><hr/><br/>';
 $html .= "<table border='1px' width='100%'>

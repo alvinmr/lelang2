@@ -1,16 +1,14 @@
 <?php
 
 if (!$_SESSION) header('location:index.php');
-if ($_SESSION['level'] != 'petugas') header('location:index.php');
+if ($_SESSION['level'] != 'petugas' || empty($_SESSION['level'])) header('location:index.php'); //Selain petugas gabisa akses halaman
 
 
-$data = mysqli_query($koneksi, "SELECT `id_lelang`, `nama_barang`, `tgl_lelang`, `harga_akhir`, `nama_lengkap`, `nama_petugas`, `status`  
-                        FROM tb_lelang JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang 
-                        JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas 
-                        JOIN tb_masyarakat ON tb_lelang.id_user = tb_masyarakat.id_user");
+$queryPenawarLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang 
+                                                JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang 
+                                                JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas 
+                                                JOIN tb_masyarakat ON tb_lelang.id_user = tb_masyarakat.id_user");
 $dataBarang = mysqli_query($koneksi, "SELECT id_barang, nama_barang, harga_awal FROM `tb_barang`");
-$dataMasyarakat = mysqli_query($koneksi, "SELECT id_user, nama_lengkap FROM `tb_masyarakat`");
-$dataPetugas = mysqli_query($koneksi, "SELECT id_petugas, nama_petugas FROM `tb_petugas`");
 $no = 0;
 ?>
 
@@ -33,7 +31,7 @@ $no = 0;
                         <th>Status</th>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($data)) : ?>
+                        <?php while ($row = mysqli_fetch_array($queryPenawarLelang)) : ?>
                         <?php $no++ ?>
                         <tr>
                             <td><?= $no ?></td>
