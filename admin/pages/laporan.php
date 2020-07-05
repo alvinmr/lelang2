@@ -6,7 +6,7 @@ require_once("./dompdf/autoload.inc.php");
 use Dompdf\Dompdf;
 
 $dompdf = new Dompdf();
-$queryLaporan = mysqli_query($koneksi, "SELECT * FROM `tb_lelang` 
+$dataLaporan = mysqli_query($koneksi, "SELECT * FROM `tb_lelang` 
                                         JOIN `tb_barang` ON tb_lelang.id_barang = tb_barang.id_barang 
                                         JOIN `tb_petugas` ON tb_lelang.id_petugas = tb_petugas.id_petugas
                                         JOIN `tb_masyarakat` ON tb_lelang.id_user = tb_masyarakat.id_user 
@@ -24,7 +24,7 @@ $html .= "<table border='1px' width='100%'>
         <th>Status</th>
     </tr>";
 
-while ($row = mysqli_fetch_array($queryLaporan)) :
+while ($row = mysqli_fetch_array($dataLaporan)) :
     $html .= "
 <tr>
     <td>" . $row['nama_barang'] . "</td>

@@ -12,12 +12,12 @@ switch ($_GET['aksi']) {
         $tipeFoto = $_FILES['foto']['type'];
         $namaFoto = $_FILES['foto']['name'];
         $ukuranFoto = $_FILES['foto']['size'];
-        $file_tmp = $_FILES['foto']['tmp_name'];
+        $foto_tmp = $_FILES['foto']['tmp_name'];
         $path = "../template/assets/img/barang/" . $namaFoto;
 
         if ($tipeFoto == "image/jpeg" || $tipeFoto == "image/png") { // Cek tipe nya harus jpeg atau png            
             if ($ukuranFoto <= 1000000) { // cek ukuran fotonya gaboleh lebih dari 10mb
-                if (move_uploaded_file($file_tmp, $path)) { // cek berhasil apa nggak upload file nya
+                if (move_uploaded_file($foto_tmp, $path)) { // cek berhasil apa nggak upload file nya
                     mysqli_query($koneksi, "INSERT INTO `tb_barang`
                     VALUES (
                         null,
@@ -49,14 +49,14 @@ switch ($_GET['aksi']) {
         $tipeFoto = $_FILES['foto']['type'];
         $namaFoto = $_FILES['foto']['name'];
         $ukuranFoto = $_FILES['foto']['size'];
-        $file_tmp = $_FILES['foto']['tmp_name']; // file_tmp berfungsi nyimpan gambar secara sementara lalu di upload
+        $foto_tmp = $_FILES['foto']['tmp_name']; // foto_tmp berfungsi nyimpan gambar secara sementara lalu di upload
         $path = "../template/assets/img/barang/" . $namaFoto;
         if ($namaFoto) { //cek apakah ada mengisi foto
             if ($tipeFoto == "image/jpeg" || $tipeFoto == "image/png") {
                 // cek ukuran fotonya gaboleh lebih dari 10mb
                 if ($ukuranFoto <= 1000000) {
                     // cek berhasil apa nggak upload file nya
-                    if (move_uploaded_file($file_tmp, $path)) {
+                    if (move_uploaded_file($foto_tmp, $path)) {
                         mysqli_query($koneksi, "UPDATE `tb_barang` SET
                             id_barang = $id,
                             nama_barang = '$nama_barang',

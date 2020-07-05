@@ -4,7 +4,7 @@ if (!$_SESSION) header('location:index.php');
 if ($_SESSION['level'] != 'petugas' || empty($_SESSION['level'])) header('location:index.php'); //Selain petugas gabisa akses halaman
 
 
-$queryPenawarLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang 
+$dataPenawarLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang 
                                                 JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang 
                                                 JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas 
                                                 JOIN tb_masyarakat ON tb_lelang.id_user = tb_masyarakat.id_user");
@@ -31,7 +31,7 @@ $no = 0;
                         <th>Status</th>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($queryPenawarLelang)) : ?>
+                        <?php while ($row = mysqli_fetch_array($dataPenawarLelang)) : ?>
                         <?php $no++ ?>
                         <tr>
                             <td><?= $no ?></td>

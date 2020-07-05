@@ -2,14 +2,14 @@
 if (empty($_SESSION['level'])) header('location:index.php'); //Selain petugas / admin gabisa akses halaman
 
 // Hitung Barang
-$queryBarang = mysqli_query($koneksi, "SELECT COUNT(*) FROM `tb_barang`");
-$barang = mysqli_fetch_row($queryBarang);
+$dataBarang = mysqli_query($koneksi, "SELECT COUNT(*) FROM `tb_barang`");
+$barang = mysqli_fetch_row($dataBarang);
 // Hitung Lelang
-$queryLelang = mysqli_query($koneksi, "SELECT COUNT(*) FROM `tb_lelang` WHERE status = 'dibuka'");
-$lelang = mysqli_fetch_row($queryLelang);
+$dataLelang = mysqli_query($koneksi, "SELECT COUNT(*) FROM `tb_lelang` WHERE status = 'dibuka'");
+$lelang = mysqli_fetch_row($dataLelang);
 // Hitung Masyarakat
-$queryMasyarakat = mysqli_query($koneksi, "SELECT COUNT(*) FROM `tb_masyarakat`");
-$masyarakat = mysqli_fetch_row($queryMasyarakat);
+$dataMasyarakat = mysqli_query($koneksi, "SELECT COUNT(*) FROM `tb_masyarakat`");
+$masyarakat = mysqli_fetch_row($dataMasyarakat);
 
 ?>
 <div class="container">

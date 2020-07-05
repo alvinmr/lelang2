@@ -8,12 +8,12 @@ switch ($_GET['aksi']) {
 
     case 'tambah':
         $id_barang = $_POST['nama_barang'];
-        $tgl_lelang = $_POST['tanggal_lelang'];
+        $tanggal_lelang = $_POST['tanggal_lelang'];
         $id_petugas = $_SESSION['id_petugas'];
         mysqli_query($koneksi, "INSERT INTO `tb_lelang` VALUES(
             null,
             '$id_barang',
-            '$tgl_lelang',
+            '$tanggal_lelang',
             null,
             null,
             '$id_petugas',

@@ -4,7 +4,7 @@ if (!$_SESSION) header('location:index.php');
 if ($_SESSION['level'] != 'admin' || empty($_SESSION['level'])) header('location:index.php'); //Selain admin gabisa akses halaman
 
 
-$queryPetugas = mysqli_query($koneksi, "SELECT * FROM `tb_petugas` WHERE level = 'petugas'");
+$dataPetugas = mysqli_query($koneksi, "SELECT * FROM `tb_petugas` WHERE level = 'petugas'");
 $no = 0;
 ?>
 
@@ -29,7 +29,7 @@ $no = 0;
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($queryPetugas)) : ?>
+                        <?php while ($row = mysqli_fetch_array($dataPetugas)) : ?>
                         <?php $no++ ?>
                         <tr>
                             <td><?= $no ?></td>

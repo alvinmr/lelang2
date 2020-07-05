@@ -2,10 +2,10 @@
 if ($_SESSION['level'] != 'petugas' || empty($_SESSION)) header('location:index'); //Selain petugas gabisa akses halaman
 
 
-$queryLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang 
+$dataLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang 
                                         JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang 
                                         JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas");
-$queryBarang = mysqli_query($koneksi, "SELECT id_barang, nama_barang, harga_awal FROM `tb_barang`");
+$dataBarang = mysqli_query($koneksi, "SELECT id_barang, nama_barang, harga_awal FROM `tb_barang`");
 $no = 0;
 ?>
 
@@ -31,7 +31,7 @@ $no = 0;
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($queryLelang)) : ?>
+                        <?php while ($row = mysqli_fetch_array($dataLelang)) : ?>
                         <?php $no++ ?>
                         <tr>
                             <td><?= $no ?></td>
@@ -79,7 +79,7 @@ $no = 0;
                     <div class="form-group">
                         <label for="nama_barang">Nama Barang</label>
                         <select class="form-control" name="nama_barang" id="nama_barang">
-                            <?php while ($rowBarang = mysqli_fetch_array($queryBarang)) : ?>
+                            <?php while ($rowBarang = mysqli_fetch_array($dataBarang)) : ?>
                             <option value="<?= $rowBarang['id_barang'] ?>"><?= $rowBarang['nama_barang'] ?></option>
                             <?php endwhile; ?>
                         </select>
