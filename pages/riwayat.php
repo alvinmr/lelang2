@@ -12,11 +12,9 @@ $no = 0;
         <div class="col">
             <h1 class="my-4">Riwayat Pasang Harga Mu</h1>
         </div>
-        <?php if ($row = mysqli_fetch_array($queryRiwayat)) : ?>
         <div class="col">
             <a href="./modules/riwayat_module.php?aksi=hapus" class="btn btn-warning">Hapus Semua</a>
         </div>
-        <?php endif; ?>
     </div>
     <table class="table text-center">
         <thead>

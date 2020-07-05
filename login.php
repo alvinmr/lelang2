@@ -5,66 +5,75 @@ include './admin/template/header.php';
 
 
 if (!empty($_GET['pesan']))
-    if ($_GET['pesan'] == "gagal") {
-        echo "<script> alert('username atau password salah!'); </script>";
-    } elseif ($_GET['pesan'] == "logout") {
-        echo "<script> alert ('Anda telah logout'); </script>";
-    } elseif ($_GET['pesan'] == "belum_login") {
-        echo "<script> alert ('Anda harus login untuk mengakses halaman admin'); </script>";
-    } elseif ($_GET['pesan'] == "berhasil") {
-        echo "<script> alert ('Akun berhasil dibuat!'); </script>";
-    }
+    if ($_GET['pesan'] == "berhasil") {
+        echo "<script> alert('user berhasil dibuat!'); </script>";
+    } 
 session_start();
 
-if (!empty($_SESSION['username'])) {
+if (!empty($_SESSION['level'])) {
     header("location:index.php");
 }
 ?>
+<!doctype html>
+<html lang="en">
 
-<section class="section">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h4>Masuk Masyarakat</h4>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Aplikasi Lelang</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="./admin/template/assets/css/sb-admin-2.min.css">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    </head>
+
+    <body class=" bg-gradient-primary">
+        <div class="container ">
+
+            <!-- Outer Row -->
+            <div class="row justify-content-center">
+
+                <div class="col-xl-6 col-lg-12 col-md-9">
+
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
+                                <div class="col-lg-12 d-none d-lg-block"></div>
+                                <div class="col-lg-12">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Login yu!</h1>
+                                        </div>
+                                        <form class="user" method="POST" action="./modules/auth.php?aksi=login">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="exampleInputEmail" name="username" aria-describedby="emailHelp"
+                                                    placeholder="Masukkan username...">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control form-control-user"
+                                                    id="exampleInputPassword" name="password" placeholder="Password">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                                Login
+                                            </button>
+                                        </form>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card-body">
-                        <form method="POST" action="./modules/auth.php?aksi=login" class="needs-validation"
-                            novalidate="">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input id="username" type="username" class="form-control" name="username" tabindex="1"
-                                    required autofocus>
-                                <div class="invalid-feedback">
-                                    Please fill in your username
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="d-block">
-                                    <label for="password" class="control-label">Password</label>
-                                </div>
-                                <input id="password" type="password" class="form-control" name="password" tabindex="2"
-                                    required>
-                                <div class="invalid-feedback">
-                                    please fill in your password
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                    Login
-                                </button>
-                            </div>
-                        </form>
-
-                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<?php include './admin/template/footer.php'; ?>
+            </div>
+
+        </div>
+    </body>

@@ -1,7 +1,5 @@
 <?php
-
-if (!$_SESSION) header('location:index.php');
-if ($_SESSION['level'] != 'petugas' || empty($_SESSION['level'])) header('location:index.php'); //Selain petugas gabisa akses halaman
+if ($_SESSION['level'] != 'petugas' || empty($_SESSION)) header('location:index'); //Selain petugas gabisa akses halaman
 
 
 $queryLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang 
@@ -12,9 +10,9 @@ $no = 0;
 ?>
 
 
-<section class="section">
-    <div class="section-header">
-        <h1>List Lelang</h1>
+<section class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">List Lelang</h1>
     </div>
     <div class="section-body">
         <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahModal">

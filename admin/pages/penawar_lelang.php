@@ -13,9 +13,9 @@ $no = 0;
 ?>
 
 
-<section class="section">
-    <div class="section-header">
-        <h1>Penawar Lelang</h1>
+<section class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Penawara Lelang</h1>
     </div>
     <div class="section-body">
         <div class="card">

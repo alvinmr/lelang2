@@ -5,37 +5,42 @@ include './template/header.php';
 
 session_start();
 
-if (empty($_SESSION['level']))  header('location:login.php');
+if (empty($_SESSION['level'])) header('location:login.php');
 ?>
 
-<body>
-    <div id="app">
-        <div class="main-wrapper">
-            <!-- Navbar -->
-            <?php include './template/navbar.php' ?>
-            <!-- End Navbar -->
 
-            <!-- Sidebar -->
-            <div class="main-sidebar">
-                <?php include './template/sidebar.php' ?>
-            </div>
-            <!-- End Sidebar -->
 
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <?php include("./template/sidebar.php") ?>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <div class="main-content">
-                <?php
-                if (!empty($_GET['page'])) {
-                    include './pages/' . $_GET["page"] . '.php';
-                } else {
-                    include './pages/dashboard.php'
-                ?>
+            <div id="content">
+                <!-- Topbar -->
+                <?php include("./template/topbar.php"); ?>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <?php if(!empty($_GET['page'])){
+                    include("./pages/". $_GET['page'] .".php");
+                } else{
+                    include("./pages/dashboard.php");
+                } ?>
+                <!-- /.container-fluid -->
+
             </div>
-            <?php } ?>
-            <!-- End Main Content -->
+            <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <?php include './template/footer.php' ?>
-            <!-- End Footer -->
-</body>
+        </div>
+        <!-- End of Content Wrapper -->
 
-</html>
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <?php include("./template/footer.php") ?>

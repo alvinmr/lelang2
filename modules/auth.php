@@ -39,6 +39,7 @@ switch ($_GET['aksi']) {
         $password = md5($_POST['password']);
         $no_tlp = $_POST['no_tlp'];
 
+        if($nama_lengkap && $username && $password && $no_tlp){
         mysqli_query($koneksi, "INSERT INTO `tb_masyarakat` VALUES (
             null,
             '$nama_lengkap',
@@ -47,6 +48,9 @@ switch ($_GET['aksi']) {
             '$no_tlp'
         )") or die(mysqli_error($koneksi));
         header("location:../login.php?pesan=berhasil");
+        }else{
+        header("location:../register.php?pesan=gagal");
+        }
         break;
 
     default:

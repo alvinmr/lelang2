@@ -12,56 +12,73 @@ $queryMasyarakat = mysqli_query($koneksi, "SELECT COUNT(*) FROM `tb_masyarakat`"
 $masyarakat = mysqli_fetch_row($queryMasyarakat);
 
 ?>
+<div class="container">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>
 
-<section class="section">
-    <div class="section-header">
-        <h1>Dashboard <?= $_SESSION['level'] ?></h1>
-    </div>
+    <!-- Content Row -->
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
-                    <i class="fas fa-list"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>Total Barang</h4>
-                    </div>
-                    <div class="card-body">
-                        <?= $barang['0'] ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>Lelang Aktif</h4>
-                    </div>
-                    <div class="card-body">
-                        <?= $lelang['0'] ?>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Barang</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?= $barang['0'] ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>Total Masyarakat</h4>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Lelang</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?= $lelang['0'] ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <?= $masyarakat['0'] ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Jumlah Masyarakat</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?= $masyarakat['0'] ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>

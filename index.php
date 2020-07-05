@@ -18,7 +18,7 @@ if (!empty($_GET['pesan'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Aplikasi Pelelangan</title>
+        <title>Aplikasi Lelang</title>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -29,9 +29,9 @@ if (!empty($_GET['pesan'])) {
 
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Aplikasi Pelelangan</a>
+                <a class="navbar-brand" href="#">Aplikasi Lelang</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@ if (!empty($_GET['pesan'])) {
                         <?php } else { ?>
                         <a class="nav-item nav-link <?= $_GET['page'] == 'riwayat' ? 'active' : '' ?>"
                             href="?page=riwayat">Riwayat</a>
-                        <a href="./modules/auth.php?aksi=logout" class="btn btn-primary">Logout</a>
+                        <a href="./modules/auth.php?aksi=logout" class="btn btn-light">Logout</a>
                         <?php } ?>
 
                     </div>

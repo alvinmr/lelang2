@@ -7,12 +7,12 @@ $queryLelang = mysqli_query($koneksi, "SELECT *  FROM tb_lelang
 ?>
 
 <div class="container">
-    <div class="greeting mt-4">
+    <div class="greeting mt-4 text-center">
         <?php if (!empty($_SESSION)) { ?>
         <h1>Hallo, <?= $_SESSION['nama_lengkap'] ?></h1>
         <!-- Content -->
         <div class="content">
-            <h1>Ini barang lelang dari kami</h1>
+            <h1 class=" font-weight-bold">--List Barang lelang--</h1>
             <div class="row">
                 <?php while($row = mysqli_fetch_array($queryLelang)): ?>
                 <div class="col-4 mt-4">
