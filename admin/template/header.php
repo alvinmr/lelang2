@@ -19,6 +19,6 @@
 
         <!-- Custom styles for this template-->
         <link href="./template/assets/css/sb-admin-2.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="./template/vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.css">
 
     </head>

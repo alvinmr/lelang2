@@ -8,6 +8,9 @@ if (!empty($_GET['pesan']))
     if ($_GET['pesan'] == "berhasil") {
         echo "<script> alert('user berhasil dibuat!'); </script>";
     } 
+    elseif ($_GET['pesan'] == "gagal") {
+        echo "<script> alert('password atau username salah!'); </script>";
+    } 
 session_start();
 
 if (!empty($_SESSION['level'])) {
